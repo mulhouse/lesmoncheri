@@ -1,8 +1,8 @@
 {
   "name": "Mon Chéri",
   "short_name": "Mon Chéri",
-  "theme_color": "#ffffff",
-  "background_color": "#e821f3",
+  "theme_color": "#ff0000",
+  "background_color": "#00ff00",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",
