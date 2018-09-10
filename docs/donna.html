@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head prefix="og: http://ogp.me/ns#">
-	<title>Les Mon Chéri</title>
+	<title>Donna</title>
 
 	<meta charset="uft-8" />
     <meta name="theme-color" content="black" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<meta name="description" content="Les plus grandes aventures de ces super-héros hors du commun narrées en chansons rythmées et étonnantes." />
+	<meta name="description" content="" />
 	<meta http-equiv="content-language" content="fr_FR" />
 	<meta name="language" content="fr_FR" />
 
@@ -28,42 +28,47 @@
 
 	<link rel="icon" type="image/jpeg" href="index.jpg" />
 	<link rel="manifest" href="/manifest.json">
-	<link href="https://fonts.googleapis.com/css?family=Fontdiner+Swanky" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Gorditas" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<style type="text/css">
 		body {	
-			font-family:'Fontdiner Swanky', cursive;
-			color: yellow; 
+			font-family:'Gorditas';
+			color: gold; 
 			background-color: black;
-			background-image: url(images/index.jpg);   
+		/*	background-image: url(images/index.jpg);   */
 		    background-size: 100%;	
 			}
 		h1 {font-size: 2.5em; text-align: center}
 		h2 {background-color: rgba(255,255,0,0.5); color:red;}
-		li {list-style-type: upper-roman; color: yellow;}
-		a {color: yellow}
-		a:hover {background-color: yellow; color: red;}
-		audio {transition:all 0.3s linear; border-radius:9px 9px 9px 9px ;}
-		audio:hover, audio:focus, audio:active {transform: scale(1.10);}
-		.hilite {background-color: red;}
+		li {list-style-type: none; color: gold; display:none;font-size: 2.5em; text-align: center}
+		a:link {color: gold;}
+		a:visited {color: red;}
+		a:active {color: white;}
+	/*	a {color: gold; text-decoration: none;}  */
+	/*	a:hover {background-color: yellow; color: red;} */
+		.hilite {display:block;}
+		.material-icons.big { font-size: 4em;}
 	</style>
 </head>
 
 <body>
-<h1>Le repère secret de <br>les Mon Chéri</h1>
-<p>Bande dessinée pour aveugles qui relate les aventures incroyables de 2 super-héros hors du temps et de l'espace.</p>
-<p style="background-color: magenta; color: cyan">ATTENTION : 
-Une concentration hors du commun sera indispensable pour suivre la trame de ces aventures débiles. La narration peut comporter du vocabulaire choquant avec des scènes explicites de violences, de sexes et de voyages temporels. Une écoute d'une durée supérieure à 14 minutes est fortement déconseillée !!!</p>
+<h1>Donna</h1>
 
-<h2>L'épopée du Golem</h2>
+
+<h1>
+<a id="play" title="Plays a random song" href="#" onclick="next();return false;"><i class="material-icons big">skip_next</i></a>
+<a id="pause" title="Pauses the music" href="#" onclick="pause();return false;"><i class="material-icons big">pause</i></a>
+</h1>
+
 <ol>
 <li><a href="audio/Mon Cheri - 13 - Le G De Y.mp3" download>Le Golem de Yaourt</a></li>
-<audio >
+<audio>
 	<source src="audio/Mon Cheri - 13 - Le G De Y.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 
 <li><a href="audio/Mon Cheri - 14 - Les Portes.mp3" download>Les Portes</a></li>
-<audio >
+<audio>
 	<source src="audio/Mon Cheri - 14 - Les Portes.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
@@ -74,150 +79,136 @@ Une concentration hors du commun sera indispensable pour suivre la trame de ces 
 </audio>
 </ol>
 
-<h2>Kyklos Helvetica</h2>
 <ol>
 <li><a href="audio/Mon Cheri - 18 - Fondue.mp3" download>Fondue alpestre</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 18 - Fondue.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 19 - La Fin.mp3" download>La fin</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 19 - La Fin.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" download>Le tombeau de Mirales</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 </ol>
 
-<h2>Actualités</h2>
 <ol>
 <li><a href="audio/Mon Cheri - 23 - Cocholume.mp3" download>Cocholume</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 23 - Cocholume.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 24 - Wong Hi Huan.mp3" download>Wong Hi Huan</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 24 - Wong Hi Huan.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 26 - Au mepris du danger et de la raison.mp3" download>Au mépris du danger et de la raison</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 26 - Au mepris du danger et de la raison.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 25 - Les Animaux (Remix).mp3" download>Les animaux (remix)</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 25 - Les Animaux (Remix).mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 </ol>
 
-<h2>Aventures</h2>
 <ol>
 <li><a href="audio/Mon Cheri - 07 - Roland, La Fille Et Le Koala.mp3" download>Roland, la fille & le koala</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 07 - Roland, La Fille Et Le Koala.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 12 - Saucisses Cocktail Saucisses.mp3" download>Saucisses cocktail saucisseS</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 12 - Saucisses Cocktail Saucisses.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 06 - Caverne De Glace.mp3" download>Caverne de glace</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 06 - Caverne De Glace.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 03 - Serge Et Les Paparazzi.mp3" download>Serge et les paparazzi</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 03 - Serge Et Les Paparazzi.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 10 - Koudju.mp3" download>Koudju</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 10 - Koudju.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 16 - Les Animaux.mp3" download>Les animaux</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 16 - Les Animaux.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 17 - Pas De Place Pour Les Minables.mp3" download>Pas de place pour les minables</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 17 - Pas De Place Pour Les Minables.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 09 - Fabiana Krystal.mp3" download>Fabiana Kryzthal</a></li>
-<audio controls>
+<audio>
 	<source src="audio/Mon Cheri - 09 - Fabiana Krystal.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-</ol>
-
-
-<h2>Oldies</h2>
-<ol>
-<li><a href="audio/Mon Cheri - 02 - Le Bel Americain.mp3" download>Le bel américain</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 02 - Le Bel Americain.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 04 - Detecteur De Metal.mp3" download>Détecteur de métal</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 04 - Detecteur De Metal.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 08 - La Flute Enchantee.mp3" download>La flûte enchantée</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 08 - La Flute Enchantee.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 11 - Le Diamant Noir.mp3" download>Le diamant noir</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 11 - Le Diamant Noir.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-</ol>
-
-
-<h2>Instrus Manteaux</h2>
-<ol>
-<li><a href="audio/Mon Cheri - 01 - Cheri Groove.mp3" download>Cherigroove</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 01 - Cheri Groove.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 21 - Galerie Glaciaire.mp3" download>Galerie Glaciaire</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 21 - Galerie Glaciaire.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 22 - U Make Me Feel.mp3" download>U make me feel</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 22 - U Make Me Feel.mp3" type="audio/mpeg">
-	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
-</audio>
-<li><a href="audio/Mon Cheri - 27 - Rhum Thai.mp3" download>Rhum thaï</a></li>
-<audio controls>
-	<source src="audio/Mon Cheri - 27 - Rhum Thai.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 </ol>
 
 <p>
 	Télécharger <a href="https://github.com/mulhouse/moncheri/archive/master.zip">tout</a><br>
-	<a href="mailto:pizza2000@free.fr?subject=LEMON CHERRY">Ecrire</a> à les Mon Chéri<br>
+	<a href="mailto:contact@donna.fr?subject=contact">Ecrire</a> à Donna<br>
 	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
 </p>
 
 <script type="text/javascript">
+
+var curTrack = -1;
+
+function pause(){
+
+    var audios = document.getElementsByTagName('audio');
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(!audios[i].paused){
+            audios[i].pause();
+            curTrack = i;
+        }
+    }	
+}
+
+function songPlaying() {
+	var playing = -1;
+	var audios = document.getElementsByTagName('audio');
+	for(var i = 0, len = audios.length; i < len;i++){
+		if (!audios[i].paused) playing = i;
+	}
+	return playing;
+}
+
+function next(){
+    var audios = document.getElementsByTagName('audio');
+    var len= audios.length;
+    var nTrack = (curTrack + Math.floor(Math.random() * (len-1) )+1)%len;
+
+
+    if (songPlaying()<0 && curTrack>=0) {		// continues paused playing
+    	audios[curTrack].play();
+    	console.log(curTrack);
+    }
+    else {
+    	audios[nTrack].play();					// starts random track
+     	console.log(nTrack, len);
+    }
+}
+
 /* Stops all others players when play */	
 document.addEventListener('play', function(e){
     var audios = document.getElementsByTagName('audio');
