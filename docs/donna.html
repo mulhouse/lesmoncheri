@@ -54,7 +54,6 @@
 <body>
 <h1>Donna</h1>
 
-
 <h1>
 <a id="play" title="Plays a random song" href="#" onclick="next();return false;"><i class="material-icons big">skip_next</i></a>
 <a id="pause" title="Pauses the music" href="#" onclick="pause();return false;"><i class="material-icons big">pause</i></a>
@@ -73,7 +72,7 @@
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 <li><a href="audio/Mon Cheri - 15 - Malefils.mp3" download>Maléfils</a></li>
-<audio >
+<audio>
 	<source src="audio/Mon Cheri - 15 - Malefils.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
@@ -174,14 +173,22 @@
 var curTrack = -1;
 
 function pause(){
+	var audios = document.getElementsByTagName('audio');
 
+	if (songPlaying()<0){ 
+		if (curTrack<0) next();
+		else audios[curTrack].play();
+	}
+	else audios[curTrack].pause();
+/*
     var audios = document.getElementsByTagName('audio');
     for(var i = 0, len = audios.length; i < len;i++){
         if(!audios[i].paused){
             audios[i].pause();
             curTrack = i;
         }
-    }	
+    }
+*/
 }
 
 function songPlaying() {
@@ -205,6 +212,7 @@ function next(){
     }
     else {
     	audios[nTrack].play();					// starts random track
+    	curTrack = nTrack;
      	console.log(nTrack, len);
     }
 }
