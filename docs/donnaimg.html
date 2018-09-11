@@ -33,6 +33,7 @@
 	<style type="text/css">
 		body {	
 			font-family:'Gorditas';
+			font-size: 2em;
 			color: gold; 
 			background-color: black;
 		/*	background-image: url(images/index.jpg);   */
@@ -46,7 +47,7 @@
 		a:active {color: white;}
 	/*	a {color: gold; text-decoration: none;}  */
 	/*	a:hover {background-color: yellow; color: red;} */
-		.hilite {display:block;}
+	/*	.hilite {display:block;}						*/
 		.material-icons.big { font-size: 4em;}
 	</style>
 </head>
@@ -54,14 +55,10 @@
 <body>
 <h1>Donna</h1>
 
-<h1>
 <a id="play" title="Plays a random song" href="#" onclick="next();return false;"><i class="material-icons big">skip_next</i></a>
 <a id="pause" title="Pauses the music" href="#" onclick="pause();return false;"><i class="material-icons big">pause</i></a>
-</h1>
-
- <p> <img id='id3artwork' width=320px><span id="id3title"></span>
- </p>	
-
+<img id='id3artwork' width=120px>&nbsp;&nbsp;<span id="id3title" style="font-size: 3em"></span>
+	
 <ol>
 <li><a href="audio/Mon Cheri - 23 - Cocholume.mp3" download>Cocholume</a></li>
 <audio>
@@ -78,9 +75,9 @@
 	<source src="audio/Mon Cheri - 26 - Au mepris du danger et de la raison.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
-<li><a href="audio/Mon Cheri - 25 - Les Animaux (Remix).mp3" download>Les animaux (remix)</a></li>
+<li><a href="audio/12-Wilk.mp3" download>Autre image</a></li>
 <audio>
-	<source src="audio/Mon Cheri - 25 - Les Animaux (Remix).mp3" type="audio/mpeg">
+	<source src="audio/12-Wilk.mp3" type="audio/mpeg">
 	Ton navigateur de web ne sait même pas lire les mp3 : installe faïeurfoks ou krome !
 </audio>
 </ol>
@@ -92,62 +89,38 @@
 	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
 </p>
 
-<script type="text/javascript" src="musicmetadata.js"></script>
+<script type="text/javascript" src="musicmetadata.min.js"></script>
 	
 <script type="text/javascript">
-
-
-
-/*
-var jsmediatags = window.jsmediatags;
-var myfile=new File([""], "audio/teaser.mp3", {type: "audio/mpeg",});
-
-jsmediatags.read(myfile, {
-  onSuccess: function(tag) {
-    console.log(tag);
-  },
-  onError: function(error) {
-    console.log(':(', error.type, error.info);
-  }
-});
-
-*/
-
-    function showMetaData(data) {
-      musicmetadata(data, function (err, result) {
-        if (err) throw err;
-        console.log(result);
-        if (result.picture.length > 0) {
-          var picture = result.picture[0];
-          var url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
-          var image = document.getElementById('id3artwork');
-          var title = document.getElementById('id3title');
-          image.src = url;
-          title.innerHTML = result.title;
-        }
-    //    var div = document.getElementById('info');
-    //    div.innerText = JSON.stringify(result, undefined, 2);
-      });
-    }
-
-    function loadID3artwork(url) {
-
-    //  var url = "audio/teaser.mp3";//document.querySelector("input").value;
-    console.log(url);
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = "arraybuffer";
-      xhr.open("get", url, true);
-      xhr.onload = function(e) {
-        showMetaData(e.target.response);
-      }
-      xhr.send();
-
-    }
- 
-
-
-
 var curTrack = -1;
+
+// https://github.com/leetreveil/musicmetadata
+function showMetaData(data) {
+    musicmetadata(data, function (err, result) {
+    if (err) throw err;
+ //   console.log(result);
+    if (result.picture.length > 0) {
+      var picture = result.picture[0];
+      var url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
+      var image = document.getElementById('id3artwork');
+      var title = document.getElementById('id3title');
+      image.src = url;
+      title.innerHTML = result.title;
+    }
+//    var div = document.getElementById('info');
+//    div.innerText = JSON.stringify(result, undefined, 2);
+  });
+}
+
+function loadID3artwork(url) { // => fetch
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = "arraybuffer";
+  xhr.open("get", url, true);
+  xhr.onload = function(e) {
+    showMetaData(e.target.response);
+  }
+  xhr.send();
+} 
 
 function pause(){
 	var audios = document.getElementsByTagName('audio');
@@ -157,15 +130,6 @@ function pause(){
 		else audios[curTrack].play();
 	}
 	else audios[curTrack].pause();
-/*
-    var audios = document.getElementsByTagName('audio');
-    for(var i = 0, len = audios.length; i < len;i++){
-        if(!audios[i].paused){
-            audios[i].pause();
-            curTrack = i;
-        }
-    }
-*/
 }
 
 function songPlaying() {
@@ -188,6 +152,7 @@ function next(){
     	console.log(curTrack);
     }
     else {
+        audios[nTrack].currentTime=0;	
     	audios[nTrack].play();					// starts random track
     	curTrack = nTrack;
      	console.log(nTrack, len);
