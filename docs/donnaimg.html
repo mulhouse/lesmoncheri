@@ -43,7 +43,7 @@
 		h2 {background-color: rgba(255,255,0,0.5); color:red;}
 		li {list-style-type: none; color: gold; display:none;font-size: 2.5em; text-align: center}
 		a:link {color: gold;}
-		a:visited {color: red;}
+		a:visited {color: red;} 
 		a:active {color: white;}
 	/*	a {color: gold; text-decoration: none;}  */
 	/*	a:hover {background-color: yellow; color: red;} */
@@ -57,7 +57,7 @@
 
 <a id="play" title="Plays a random song" href="#" onclick="next();return false;"><i class="material-icons big">skip_next</i></a>
 <a id="pause" title="Pauses the music" href="#" onclick="pause();return false;"><i class="material-icons big">pause</i></a>
-<img id='id3artwork' width=120px>&nbsp;&nbsp;<span id="id3title" style="font-size: 3em"></span>
+<img id='id3artwork' width=120px>&nbsp;&nbsp;<span id="id3title" style="font-size: 2em"></span>
 	
 <ol>
 <li><a href="audio/Mon Cheri - 23 - Cocholume.mp3" download>Cocholume</a></li>
@@ -104,6 +104,8 @@ function showMetaData(data) {
       var url = URL.createObjectURL(new Blob([picture.data], {'type': 'image/' + picture.format}));
       var image = document.getElementById('id3artwork');
       var title = document.getElementById('id3title');
+      var body = document.getElementsByTagName('body')[0];
+	  body.style.backgroundImage = 'url('+url+')';
       image.src = url;
       title.innerHTML = result.title;
     }
@@ -112,7 +114,7 @@ function showMetaData(data) {
   });
 }
 
-function loadID3artwork(url) { // => fetch
+function loadID3(url) { // => fetch
   var xhr = new XMLHttpRequest();
   xhr.responseType = "arraybuffer";
   xhr.open("get", url, true);
@@ -149,13 +151,13 @@ function next(){
 
     if (songPlaying()<0 && curTrack>=0) {		// continues paused playing
     	audios[curTrack].play();
-    	console.log(curTrack);
+    	// console.log(curTrack);
     }
     else {
         audios[nTrack].currentTime=0;	
     	audios[nTrack].play();					// starts random track
     	curTrack = nTrack;
-     	console.log(nTrack, len);
+     	// console.log(nTrack, len);
     }
 }
 
@@ -171,9 +173,9 @@ document.addEventListener('play', function(e){
         else {
         	// console.log(titles[i].innerHTML);
         	titles[i].classList.add("hilite");
-        	console.log(e.target.currentSrc);
-        	console.log(audios[i].currentSrc)
-        	loadID3artwork(audios[i].currentSrc);
+        	// console.log(e.target.currentSrc);
+        	// console.log(audios[i].currentSrc)
+        	loadID3(audios[i].currentSrc);
         }
     }
 }, true);
