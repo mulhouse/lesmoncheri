@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head prefix="og: http://ogp.me/ns#">
-	<title>Donna</title>
+	<title>Mon Chéri</title>
 
-	<meta charset="uft-8" />
+	<meta charset="utf-8" />
     <meta name="theme-color" content="black" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -53,7 +53,7 @@
 </head>
 
 <body>
-<h1>Donna</h1>
+<h1>Mon Chéri</h1>
 
 <a id="play" title="Plays a random song" href="#" onclick="next();return false;"><i class="material-icons big">skip_next</i></a>
 <a id="pause" title="Pauses the music" href="#" onclick="pause();return false;"><i class="material-icons big">pause</i></a>
@@ -85,7 +85,7 @@
 
 <p>
 	Télécharger <a href="https://github.com/mulhouse/moncheri/archive/master.zip">tout</a><br>
-	<a href="mailto:contact@donna.fr?subject=contact">Ecrire</a> à Donna<br>
+	<a href="mailto:contact@nowhere.fr?subject=contact">Ecrire</a> à les mon chéri<br>
 	<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
 </p>
 
@@ -95,6 +95,9 @@
 var curTrack = -1;
 
 // https://github.com/leetreveil/musicmetadata
+// fetch/xhr loads whole file to read id3
+// better use https://github.com/aadsm/jsmediatags ?
+
 function showMetaData(data) {
     musicmetadata(data, function (err, result) {
     if (err) throw err;
@@ -114,15 +117,38 @@ function showMetaData(data) {
   });
 }
 
-function loadID3(url) { // => fetch
+function fetchFile(url) {
+if (self.fetch) {
+	fetch(url)
+	.then(function(response) {
+	  return response.arrayBuffer();
+	})
+	.then(function(ab) {
+		showMetaData(ab);
+	})
+	.catch(function(){
+		console.log("fetch failed");
+		xhrFile(url);
+	});
+}
+else {
+	xhrFile(url);
+}
+
+} 
+
+function xhrFile(url){
   var xhr = new XMLHttpRequest();
   xhr.responseType = "arraybuffer";
   xhr.open("get", url, true);
   xhr.onload = function(e) {
     showMetaData(e.target.response);
+  }  
+  xhr.onerror = function() {
+    console.log("xhr failed");
   }
   xhr.send();
-} 
+}
 
 function pause(){
 	var audios = document.getElementsByTagName('audio');
@@ -175,7 +201,7 @@ document.addEventListener('play', function(e){
         	titles[i].classList.add("hilite");
         	// console.log(e.target.currentSrc);
         	// console.log(audios[i].currentSrc)
-        	loadID3(audios[i].currentSrc);
+        	fetchFile(audios[i].currentSrc);
         }
     }
 }, true);
