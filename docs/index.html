@@ -405,6 +405,7 @@ document.addEventListener('play', function(e){
         if(audios[i] != e.target){
             audios[i].pause();
         }
+        else curTrack=i;
     }
 }, true);
 
