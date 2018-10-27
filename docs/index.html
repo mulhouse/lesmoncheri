@@ -400,7 +400,10 @@ document.addEventListener('play', function(e){
         if(audios[i] != e.target){
             audios[i].pause();
         }
-        else curTrack=i;
+        else {
+			curTrack=i;
+			audios[curTrack].currentTime=0.1;
+		}
     }
 }, true);
 
