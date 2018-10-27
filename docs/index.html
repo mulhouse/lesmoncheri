@@ -399,10 +399,11 @@ document.addEventListener('play', function(e){
     for(var i = 0, len = audios.length; i < len;i++){
         if(audios[i] != e.target){
             audios[i].pause();
+			audios[i].currentTime=0.1;
         }
         else {
 			curTrack=i;
-			audios[curTrack].currentTime=0.1;
+		//	audios[curTrack].currentTime=0.1; 
 		}
     }
 }, true);
@@ -413,6 +414,7 @@ document.addEventListener('ended', function(e){
     var audios = document.getElementsByTagName('audio');
     for(var i = 0, len = audios.length; i < len;i++){
         if(audios[i] == e.target){
+			
             audios[i+1].play();
 			curTrack = i+1;
         }
