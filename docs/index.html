@@ -408,8 +408,21 @@ document.addEventListener('play', function(e){
     }
 }, true);
 
+document.addEventListener("timeupdate", function(e) {
+
+    var audios = document.getElementsByTagName('audio');
+    for(var i = 0, len = audios.length; i < len;i++){
+        if(audios[i] == e.target){
+  if (e.target.currentTime > e.target.duration-1){			
+            audios[i+1].play();
+			curTrack = i+1;
+        }
+    }}
+}, true);
+
 /* Starts next player when one song has ended 
 	without resetting time to zero*/
+	/*
 document.addEventListener('ended', function(e){
     var audios = document.getElementsByTagName('audio');
     for(var i = 0, len = audios.length; i < len;i++){
@@ -421,6 +434,7 @@ document.addEventListener('ended', function(e){
     }
 }, true);
 
+*/
 /* empty SW for add to homescreen prompt on android devices */
 if ('serviceWorker' in navigator) {
   console.log("Will service worker register?");
