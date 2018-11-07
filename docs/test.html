@@ -2,6 +2,7 @@
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="google" content="notranslate" />
 	<style>
 #playlist {background:#666;width:95%;padding:10px;border-radius:9px; }
 #audio {	position: fixed;
@@ -14,7 +15,6 @@
 }
 .active a {color:white;text-decoration:none;background:black; font-weight:bold;}
 li a {color:#eeeedd;background:#333;padding:5px;display:block;}
-li a:hover {text-decoration:none;background:#111;}		
 li {list-style-type: none; font-family: Arial, Sans;}
 	</style>
 	</head>
@@ -35,9 +35,7 @@ li {list-style-type: none; font-family: Arial, Sans;}
 		<li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" >Le tombeau de Mirales</a></li>	
     </ul>
 	
-	<script type="text/javascript">
-
-	/* from: http://devblog.lastrose.com/html5-audio-video-playlist/ without jQuery */
+	<script> /* from: http://devblog.lastrose.com/html5-audio-video-playlist/ without jQuery */
 	
 var audio;
 var playlist;
@@ -81,11 +79,12 @@ function init(){
 			run(link,audio[0]);
         }
     });
+	document.getElementById("audio").focus();
 }
 
 // plavs link (a) with player (audio)
 function run(link, player){
-        player.src = link.href; // changes src attr, not source subelement
+        player.src = link.href;
         par = link.parentNode;
 		var pl = document.querySelectorAll('li');
 		for (var i = 0; i < pl.length; i++)

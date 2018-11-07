@@ -2,21 +2,15 @@
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="google" content="notranslate" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	
 	<style>
 #playlist {background:#666;width:95%;padding:10px;border-radius:9px; }
-#audio {	position: fixed;
-			width:90%;
-			bottom: 40px;
-			right: 10px;
-			z-index: 99;
-			background-color: rgba(255,255,255,0);
-			border-radius:9px; 
-}
+#audio {position: fixed;width:90%;bottom: 40px;	right: 10px;z-index: 99;
+		background-color: rgba(255,255,255,0);border-radius:9px; }
 .active a {color:white;text-decoration:none;background:black; font-weight:bold;}
 li a {color:#eeeedd;background:#333;padding:5px;display:block;}
-li a:hover {text-decoration:none;background:#111;}		
 li {list-style-type: none; font-family: Arial, Sans;}
 	</style>
 	</head>
@@ -37,10 +31,7 @@ li {list-style-type: none; font-family: Arial, Sans;}
 		<li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" >Le tombeau de Mirales</a></li>	
     </ul>
 	
-	<script type="text/javascript">
-
-	/* from: http://devblog.lastrose.com/html5-audio-video-playlist/ without jQuery */
-	
+	<script> /* from: http://devblog.lastrose.com/html5-audio-video-playlist/ */
 var audio;
 var playlist;
 var tracks;
@@ -67,12 +58,13 @@ function init(){
         current++;
         if(current == len){
             current = 0;
-            link = playlist.find('li a')[0];
+            link = playlist.find('li a')[0];	// restart playlist
         }else{
             link = playlist.find('li a')[current];    
         }
         run($(link),audio[0]);
     });
+	document.getElementById("audio").focus();
 }
 function run(link, player){
         player.src = link.attr('href');
