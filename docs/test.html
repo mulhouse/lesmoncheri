@@ -1,0 +1,108 @@
+<html>
+	<head>
+	<meta charset="utf-8" />
+	<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script -->
+	
+	<style>
+#playlist {background:#666;width:95%;padding:10px;border-radius:9px; }
+#audio {	position: fixed;
+			width:90%;
+			bottom: 10px;
+			right: 10px;
+			z-index: 99;
+			background-color: rgba(255,255,255,0);
+			border-radius:9px; 
+}
+.active a {color:white;text-decoration:none;background:black; font-weight:bold;}
+li a {color:#eeeedd;background:#333;padding:5px;display:block;}
+li a:hover {text-decoration:none;background:#111;}		
+li {list-style-type: none; font-family: Arial, Sans;}
+	</style>
+	</head>
+
+	<body>
+    <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg" >
+        Sorry, your browser does not support HTML5 audio.
+    </audio>
+    <ul id="playlist">
+		<li><a href="audio/Mon Cheri - 18 - Fondue.mp3" >Fondue alpestre</a></li>
+		<li><a href="audio/Mon Cheri - 19 - La Fin.mp3" >La fin</a></li>
+		<li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" >Le tombeau de Mirales</a></li>	
+		<li><a href="audio/Mon Cheri - 18 - Fondue.mp3" >Fondue alpestre</a></li>
+		<li><a href="audio/Mon Cheri - 19 - La Fin.mp3" >La fin</a></li>
+		<li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" >Le tombeau de Mirales</a></li>	
+		<li><a href="audio/Mon Cheri - 18 - Fondue.mp3" >Fondue alpestre</a></li>
+		<li><a href="audio/Mon Cheri - 19 - La Fin.mp3" >La fin</a></li>
+		<li><a href="audio/Mon Cheri - 20 - Le tombeau de Mirales.mp3" >Le tombeau de Mirales</a></li>	
+    </ul>
+	
+	<script type="text/javascript">
+
+	/* from: http://devblog.lastrose.com/html5-audio-video-playlist/ without jQuery */
+	
+function getNodeIndex( elm ){ 
+    var c = elm.parentNode.parentNode.children, i = 0;
+	console.log(c);
+    for(; i < c.length; i++ )
+        if( c[i] == elm ) return i;
+}
+	
+var audio;
+var playlist;
+var tracks;
+var current;
+
+init();
+function init(){
+    current = 0;
+
+	audio = document.querySelectorAll('audio');
+	playlist = document.querySelector('#playlist');
+	tracks = playlist.querySelectorAll('#playlist li a');
+    len = tracks.length;
+	
+    audio[0].volume = .10;
+	
+	// set 1st track as src for audio
+	audio[0].src=tracks[0].href;
+	document.querySelectorAll('#playlist li')[0].classList.add('active');
+
+	// click handlers for links
+	tracks.forEach(function(link) {
+    link.addEventListener('click', function(e){
+        e.preventDefault();
+		for (var i=0; i < tracks.length; i++)
+			if (tracks[i] == link) current = i;		
+        run(link, audio[0]);
+    });
+});
+	
+	// ended event handler
+    audio[0].addEventListener('ended',function(e){
+        current++;
+        if(current == len){			// loop on playlist's end
+            current = 0;
+            link = playlist.querySelectorAll('a')[0];
+			run(link,audio[0]);		// or not for stopping after the last track
+        }else{
+            link = playlist.querySelectorAll('a')[current];    
+			run(link,audio[0]);
+        }
+    });
+}
+
+// plavs link (a) with player (audio)
+function run(link, player){
+        player.src = link.href; // changes src attr, not source subelement
+        par = link.parentNode;
+		var pl = document.querySelectorAll('li');
+		for (var i = 0; i < pl.length; i++)
+			pl[i].classList.remove('active');	
+		par.classList.add('active');
+        audio[0].load();
+        audio[0].play();
+}
+	</script>
+	</body>
+</html>
+	
