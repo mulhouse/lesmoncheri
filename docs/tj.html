@@ -2,6 +2,8 @@
 	<head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<style>
 #playlist {background:#666;width:95%;padding:10px;border-radius:9px; }
 #audio {	position: fixed;
@@ -47,50 +49,35 @@ var current;
 init();
 function init(){
     current = 0;
-
-	audio = document.querySelectorAll('audio');
-	playlist = document.querySelector('#playlist');
-	tracks = playlist.querySelectorAll('#playlist li a');
+    audio = $('audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li a');
     len = tracks.length;
-	
     audio[0].volume = .10;
-	
-	// set 1st track as src for audio
 	audio[0].src=tracks[0].href;
-	document.querySelectorAll('#playlist li')[0].classList.add('active');
-
-	// click handlers for links
-	tracks.forEach(function(link) {
-    link.addEventListener('click', function(e){
+	$('#playlist li').first().addClass('active');
+	
+    playlist.find('a').click(function(e){
         e.preventDefault();
-		for (var i=0; i < tracks.length; i++)
-			if (tracks[i] == link) current = i;		
+        link = $(this);
+        current = link.parent().index();
         run(link, audio[0]);
     });
-});
-	
-	// ended event handler
     audio[0].addEventListener('ended',function(e){
         current++;
-        if(current == len){			// loop on playlist's end
+        if(current == len){
             current = 0;
-            link = playlist.querySelectorAll('a')[0];
-			run(link,audio[0]);		// or not for stopping after the last track
+            link = playlist.find('li a')[0];
         }else{
-            link = playlist.querySelectorAll('a')[current];    
-			run(link,audio[0]);
+            link = playlist.find('li a')[current];    
         }
+        run($(link),audio[0]);
     });
 }
-
-// plavs link (a) with player (audio)
 function run(link, player){
-        player.src = link.href; // changes src attr, not source subelement
-        par = link.parentNode;
-		var pl = document.querySelectorAll('li');
-		for (var i = 0; i < pl.length; i++)
-			pl[i].classList.remove('active');	
-		par.classList.add('active');
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
         audio[0].load();
         audio[0].play();
 }
