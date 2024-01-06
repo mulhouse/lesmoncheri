@@ -98,7 +98,7 @@ h1{
 
 #player-container {
     background-color: rgba(20,20,20,0.5) !important;
-    padding: 2em 0 1em 0;
+    /* padding: 2em 0 1em 0; */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -139,8 +139,8 @@ audio::-webkit-media-controls-panel {
 }
 
 #audio-previous, #audio-next, #audio-random {
-	height: 40px;
-	margin-bottom: 32px;
+/*	height: 40px;
+	margin-bottom: 32px; */
 }
 
 input[type=checkbox] {
