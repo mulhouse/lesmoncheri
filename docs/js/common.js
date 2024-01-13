@@ -19,7 +19,7 @@ function filenameWithoutPath(filename, ext = false)
 // Returns the element URL
 function getAudioHref(element)
 {
-    return element.parentElement.getAttribute('href');
+    return element.parentElement.getElementsByClassName("audio-src")[0].getAttribute('href');
 }
 
 // Fetches the audio file associated to the URL and then caches it
