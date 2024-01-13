@@ -91,7 +91,7 @@ function recursiveCache(parentUL)
         else if (child.classList.contains('audio-file'))
         {
             // Audio file URL
-            let href = child.getAttribute('href');
+            let href = child.getElementsByClassName("audio-src")[0].getAttribute('href');
             cacheAudioFile(href);
         }
     }
@@ -116,7 +116,7 @@ function recursiveDownload(parentUL, parentZip, promises)
         else if (child.classList.contains('audio-file'))
         {
             // Audio file URL
-            let href = child.getAttribute('href');
+            let href = child.getElementsByClassName("audio-src")[0].getAttribute('href');
 
             // Fetches the audio file
             let promise = downloadFile(href, (blob) =>
