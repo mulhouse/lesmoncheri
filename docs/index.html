@@ -256,28 +256,25 @@
     </ul>
     </div>
     </div>
-    <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Licence BYNCSA"></a><br>
+    <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="Licence: CC BY-NC-SA 4.0 DEED"></a><br>
         Télécharger <a href="https://github.com/mulhouse/moncheri/archive/master.zip">tout</a><br>
         <a href="mailto:mulhouse@protonmail.com?subject=LEMON%20CHERRY">Ecrire</a> à les Mon Chéri<br></p>
     </main>
 
     <div id="player-container" class="grey darken-3 white-text center">
         <div>
+            <button id="audio-previous" class="btn-small waves-effect waves-light black"><i class="material-icons">skip_previous</i></button>	            
             <span id="current-audio-file">No sound</span>
             <input id="audio-repeat" type="checkbox" name="audio-repeat">
             <label for="audio-repeat"></label>
+            <button id="audio-next" class="btn-small waves-effect waves-light black"><i class="material-icons">skip_next</i></button>
+            <button id="audio-random" class="btn-small waves-effect waves-light black"><i class="material-icons">shuffle</i></button>
         </div>
-        
         <audio id="audio-player" controls>
                 Your browser does not support the audio element.
         </audio>
-    <div>
-        <button id="audio-previous" class="btn-small waves-effect waves-light black"><i class="material-icons">skip_previous</i></button>		
-        <button id="audio-next" class="btn-small waves-effect waves-light black"><i class="material-icons">skip_next</i></button>
-        <button id="audio-random" class="btn-small waves-effect waves-light black"><i class="material-icons">shuffle</i></button>
     </div>
     <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-    </div>
 
     <script src="service-worker.js"></script>
     <script src="pwa.js"></script>
